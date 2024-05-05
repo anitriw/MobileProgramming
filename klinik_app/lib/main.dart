@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '/ui/pegawai_page.dart';
+import 'package:klinik_app/ui/pasien_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Data Pegawai',
       debugShowCheckedModeBanner: false,
-      home: PagePegawai(),
+      home: PagePasien(),
     );
   }
 }
