@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:klinik_app/model/pasien.dart';
+import 'package:klinik_app/ui/pasien_form.dart';
 import 'pasien_detail.dart';
 
 class PagePasien extends StatefulWidget {
@@ -45,6 +46,18 @@ class _PagePasienState extends State<PagePasien> {
             "Data Pasien",
             style: TextStyle(color: Colors.white),
           ),
+          actions: [
+            GestureDetector(
+              child: const Icon(
+                Icons.add,
+                color: Colors.white,
+              ),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: ((context) => PasienForm())));
+              },
+            )
+          ],
           backgroundColor: Colors.blue),
       body: ListView.builder(
         itemCount: _pasien.length,
