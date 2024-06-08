@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:klinik_app/model/pegawai.dart';
-import 'package:klinik_app/ui/pegawai_detail.dart';
+import '../ui/pegawai_detail.dart';
 
-class PegawaiForm extends StatefulWidget {
-  const PegawaiForm({Key? key}) : super(key: key);
-  _PegawaiFormState createState() => _PegawaiFormState();
+class PegawaiUpdateForm extends StatefulWidget {
+  final Pegawai pegawai;
+
+  const PegawaiUpdateForm({Key? key, required this.pegawai}) : super(key: key);
+  _PegawaiUpdateFormState createState() => _PegawaiUpdateFormState();
 }
 
-class _PegawaiFormState extends State<PegawaiForm> {
+class _PegawaiUpdateFormState extends State<PegawaiUpdateForm> {
   final _formKey = GlobalKey<FormState>();
   final _idCtrl = TextEditingController();
   final _nipCtrl = TextEditingController();
@@ -16,13 +18,26 @@ class _PegawaiFormState extends State<PegawaiForm> {
   final _nomor_teleponCtrl = TextEditingController();
   final _emailCtrl = TextEditingController();
   final _passwordCtrl = TextEditingController();
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      _idCtrl.text = widget.pegawai.id;
+      _nipCtrl.text = widget.pegawai.nip;
+      _namaCtrl.text = widget.pegawai.nama;
+      _tanggal_lahirCtrl.text = widget.pegawai.tanggal_lahir;
+      _nomor_teleponCtrl.text = widget.pegawai.nomor_telepon;
+      _emailCtrl.text = widget.pegawai.email;
+      _passwordCtrl.text = widget.pegawai.password;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
           title: const Text(
-            " Tambah Data Pegawai",
+            "Ubah Data Pegawai",
             style: TextStyle(color: Colors.white),
           ),
           backgroundColor: Colors.blue),
@@ -79,7 +94,7 @@ class _PegawaiFormState extends State<PegawaiForm> {
       controller: _namaCtrl,
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return 'Silahkan Masukkan Nama';
+          return 'PSilahkan Masukkan Nama';
         }
         return null;
       },
@@ -161,7 +176,8 @@ class _PegawaiFormState extends State<PegawaiForm> {
         }
       },
       style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-      child: const Text("Simpan", style: TextStyle(color: Colors.white)),
+      child:
+          const Text("Simpan Perubahan", style: TextStyle(color: Colors.white)),
     );
   }
 }

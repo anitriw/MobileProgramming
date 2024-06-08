@@ -13,7 +13,7 @@ class PagePegawai extends StatefulWidget {
 class _PagePegawaiState extends State<PagePegawai> {
   final List<Pegawai> _pegawai = [
     Pegawai(
-      id: 1,
+      id: "1",
       nama: 'Bayu Saputra',
       nip: '123456',
       tanggal_lahir: '2000-03-21',
@@ -22,7 +22,7 @@ class _PagePegawaiState extends State<PagePegawai> {
       password: '1234',
     ),
     Pegawai(
-      id: 2,
+      id: "2",
       nama: 'Airin Putri Baskara',
       nip: '678909',
       tanggal_lahir: '1990-03-12',
@@ -31,7 +31,7 @@ class _PagePegawaiState extends State<PagePegawai> {
       password: '567a',
     ),
     Pegawai(
-      id: 3,
+      id: "3",
       nama: 'Rina Kartika Sari',
       nip: '987654',
       tanggal_lahir: '2001-05-09',

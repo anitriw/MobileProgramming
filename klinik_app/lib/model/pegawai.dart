@@ -1,5 +1,5 @@
 class Pegawai {
-  final int id;
+  final String id;
   final String nip;
   final String nama;
   final String tanggal_lahir;

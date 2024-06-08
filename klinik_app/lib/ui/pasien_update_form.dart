@@ -1,28 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:klinik_app/model/pasien.dart';
 import 'package:klinik_app/model/pegawai.dart';
-import 'package:klinik_app/ui/pegawai_detail.dart';
+import 'package:klinik_app/ui/pasien_detail.dart';
+import '../ui/pegawai_detail.dart';
 
-class PegawaiForm extends StatefulWidget {
-  const PegawaiForm({Key? key}) : super(key: key);
-  _PegawaiFormState createState() => _PegawaiFormState();
+class PasienUpdateForm extends StatefulWidget {
+  final Pasien pasien;
+
+  const PasienUpdateForm({Key? key, required this.pasien}) : super(key: key);
+  _PasienUpdateFormState createState() => _PasienUpdateFormState();
 }
 
-class _PegawaiFormState extends State<PegawaiForm> {
+class _PasienUpdateFormState extends State<PasienUpdateForm> {
   final _formKey = GlobalKey<FormState>();
   final _idCtrl = TextEditingController();
-  final _nipCtrl = TextEditingController();
+  final _nomor_rmCtrl = TextEditingController();
   final _namaCtrl = TextEditingController();
   final _tanggal_lahirCtrl = TextEditingController();
   final _nomor_teleponCtrl = TextEditingController();
-  final _emailCtrl = TextEditingController();
-  final _passwordCtrl = TextEditingController();
+  final _alamatCtrl = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      _idCtrl.text = widget.pasien.id;
+      _nomor_rmCtrl.text = widget.pasien.nomor_rm;
+      _namaCtrl.text = widget.pasien.nama;
+      _tanggal_lahirCtrl.text = widget.pasien.tanggal_lahir;
+      _nomor_teleponCtrl.text = widget.pasien.nomor_telepon;
+      _alamatCtrl.text = widget.pasien.alamat;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
           title: const Text(
-            " Tambah Data Pegawai",
+            "Ubah Data Pasien",
             style: TextStyle(color: Colors.white),
           ),
           backgroundColor: Colors.blue),
@@ -32,12 +48,11 @@ class _PegawaiFormState extends State<PegawaiForm> {
           child: Column(
             children: [
               _fieldID(),
-              _fieldNIP(),
+              _fieldNomorRM(),
               _fieldNama(),
               _fieldTanggalLahir(),
               _fieldNomorTelepon(),
-              _fieldEmail(),
-              _fieldPassword(),
+              _fieldAlamat(),
               SizedBox(height: 20),
               _tombolSimpan()
             ],
@@ -60,13 +75,13 @@ class _PegawaiFormState extends State<PegawaiForm> {
     );
   }
 
-  _fieldNIP() {
+  _fieldNomorRM() {
     return TextFormField(
-      decoration: const InputDecoration(labelText: "NIP:"),
-      controller: _nipCtrl,
+      decoration: const InputDecoration(labelText: "Nomor RM:"),
+      controller: _nomor_rmCtrl,
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return 'Silahkan Masukkan NIP';
+          return 'Silahkan Masukkan Nomor RM';
         }
         return null;
       },
@@ -79,7 +94,7 @@ class _PegawaiFormState extends State<PegawaiForm> {
       controller: _namaCtrl,
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return 'Silahkan Masukkan Nama';
+          return 'PSilahkan Masukkan Nama';
         }
         return null;
       },
@@ -112,27 +127,13 @@ class _PegawaiFormState extends State<PegawaiForm> {
     );
   }
 
-  _fieldEmail() {
+  _fieldAlamat() {
     return TextFormField(
-      decoration: const InputDecoration(labelText: "Email:"),
-      controller: _emailCtrl,
+      decoration: const InputDecoration(labelText: "Alamat:"),
+      controller: _alamatCtrl,
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return 'Silahkan Masukkan Email';
-        }
-        return null;
-      },
-    );
-  }
-
-  _fieldPassword() {
-    return TextFormField(
-      decoration: const InputDecoration(labelText: "Password:"),
-      controller: _passwordCtrl,
-      obscureText: true,
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Silahkan Masukkan Password';
+          return 'Silahkan Masukkan Alamat';
         }
         return null;
       },
@@ -143,25 +144,25 @@ class _PegawaiFormState extends State<PegawaiForm> {
     return ElevatedButton(
       onPressed: () {
         if (_formKey.currentState!.validate()) {
-          Pegawai pegawai = Pegawai(
+          Pasien pasien = Pasien(
             id: _idCtrl.text,
-            nip: _nipCtrl.text,
+            nomor_rm: _nomor_rmCtrl.text,
             nama: _namaCtrl.text,
             tanggal_lahir: _tanggal_lahirCtrl.text,
             nomor_telepon: _nomor_teleponCtrl.text,
-            email: _emailCtrl.text,
-            password: _passwordCtrl.text,
+            alamat: _alamatCtrl.text,
           );
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => PegawaiDetail(pegawai: pegawai),
+              builder: (context) => PasienDetail(pasien: pasien),
             ),
           );
         }
       },
       style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-      child: const Text("Simpan", style: TextStyle(color: Colors.white)),
+      child:
+          const Text("Simpan Perubahan", style: TextStyle(color: Colors.white)),
     );
   }
 }

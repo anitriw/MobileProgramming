@@ -1,9 +1,9 @@
 class Pasien {
-  final int id;
-  final int nomor_rm;
+  final String id;
+  final String nomor_rm;
   final String nama;
   final String tanggal_lahir;
-  final int nomor_telepon;
+  final String nomor_telepon;
   final String alamat;
 
   Pasien({

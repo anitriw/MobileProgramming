@@ -13,27 +13,27 @@ class PagePasien extends StatefulWidget {
 class _PagePasienState extends State<PagePasien> {
   final List<Pasien> _pasien = [
     Pasien(
-      id: 1,
-      nomor_rm: 11,
+      id: "1",
+      nomor_rm: "11",
       nama: 'Prima Jaya Saputra',
       tanggal_lahir: '2000-05-29',
-      nomor_telepon: 088898769876,
+      nomor_telepon: "088898769876",
       alamat: 'Sleman',
     ),
     Pasien(
-      id: 2,
-      nomor_rm: 12,
+      id: "2",
+      nomor_rm: "12",
       nama: 'Amalia Cahyaningrum',
       tanggal_lahir: '2003-05-23',
-      nomor_telepon: 088898765432,
+      nomor_telepon: "088898765432",
       alamat: 'Gunung Kidul',
     ),
     Pasien(
-      id: 3,
-      nomor_rm: 13,
+      id: "3",
+      nomor_rm: "13",
       nama: 'Wahyu Kencono Wungu',
       tanggal_lahir: '2001-06-29',
-      nomor_telepon: 088854670987,
+      nomor_telepon: "088854670987",
       alamat: 'Sleman',
     ),
   ];
