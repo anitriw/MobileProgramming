@@ -45,23 +45,25 @@ class _PagePegawaiState extends State<PagePegawai> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text(
-            "Data Pegawai",
-            style: TextStyle(color: Colors.white),
-          ),
-          actions: [
-            GestureDetector(
-              child: const Icon(
-                Icons.add,
-                color: Colors.white,
-              ),
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: ((context) => PegawaiForm())));
-              },
-            )
-          ],
-          backgroundColor: Colors.blue),
+        title: Text(
+          "Data Pegawai",
+          style: TextStyle(color: Colors.white),
+        ),
+        actions: [
+          GestureDetector(
+            child: const Icon(
+              Icons.add,
+              color: Colors.white,
+            ),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: ((context) => PegawaiForm())));
+            },
+          )
+        ],
+        backgroundColor: Colors.blue,
+        iconTheme: IconThemeData(color: Colors.white),
+      ),
       body: ListView.builder(
         itemCount: _pegawai.length,
         itemBuilder: (context, Index) {

@@ -36,11 +36,13 @@ class _PegawaiUpdateFormState extends State<PegawaiUpdateForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: const Text(
-            "Ubah Data Pegawai",
-            style: TextStyle(color: Colors.white),
-          ),
-          backgroundColor: Colors.blue),
+        title: const Text(
+          "Ubah Data Pegawai",
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.blue,
+        iconTheme: IconThemeData(color: Colors.white),
+      ),
       body: SingleChildScrollView(
         child: Form(
           key: _formKey,

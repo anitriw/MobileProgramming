@@ -1,4 +1,6 @@
+import 'dart:js';
 import 'package:flutter/material.dart';
+import 'package:klinik_app/ui/pasien_page.dart';
 import 'package:klinik_app/ui/pasien_update_form.dart';
 import '../model/pasien.dart';
 
@@ -11,11 +13,13 @@ class PasienDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text(
-            "Detail Pasien",
-            style: TextStyle(color: Colors.white),
-          ),
-          backgroundColor: Colors.blue),
+        title: Text(
+          "Detail Pasien",
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.blue,
+        iconTheme: IconThemeData(color: Colors.white),
+      ),
       body: Padding(
         padding: EdgeInsets.all(16.0),
         child: Column(
@@ -75,13 +79,6 @@ class PasienDetail extends StatelessWidget {
               actions: [
                 TextButton(
                   onPressed: () {
-                    // If user cancels, just pop the dialog
-                    Navigator.of(context).pop();
-                  },
-                  child: Text("Batal"),
-                ),
-                TextButton(
-                  onPressed: () {
                     // If user confirms, perform the delete action
                     // For example, you can call a method to delete the pegawai
                     // Then navigate back to the previous screen
@@ -89,7 +86,19 @@ class PasienDetail extends StatelessWidget {
                     Navigator.of(context)
                         .pop(); // Navigate back to the previous screen
                   },
-                  child: Text("Hapus"),
+                  child:
+                      const Text("Ya", style: TextStyle(color: Colors.white)),
+                  style:
+                      ElevatedButton.styleFrom(backgroundColor: Colors.green),
+                ),
+                TextButton(
+                  onPressed: () {
+                    // If user cancels, just pop the dialog
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text("Tidak",
+                      style: TextStyle(color: Colors.white)),
+                  style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
                 ),
               ],
             );

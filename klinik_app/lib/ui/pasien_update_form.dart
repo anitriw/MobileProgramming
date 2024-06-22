@@ -37,11 +37,13 @@ class _PasienUpdateFormState extends State<PasienUpdateForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: const Text(
-            "Ubah Data Pasien",
-            style: TextStyle(color: Colors.white),
-          ),
-          backgroundColor: Colors.blue),
+        title: const Text(
+          "Ubah Data Pasien",
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.blue,
+        iconTheme: IconThemeData(color: Colors.white),
+      ),
       body: SingleChildScrollView(
         child: Form(
           key: _formKey,

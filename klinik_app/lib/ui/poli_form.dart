@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:klinik_app/model/poli.dart';
+import 'package:klinik_app/service/poli_service.dart';
 import 'package:klinik_app/ui/poli_detail.dart';
-import '../model/poli.dart';
-import '../ui/pasien_detail.dart';
 
 class PoliForm extends StatefulWidget {
   const PoliForm({Key? key}) : super(key: key);
@@ -16,11 +16,13 @@ class _PoliFormState extends State<PoliForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: const Text(
-            " Tambah Poli",
-            style: TextStyle(color: Colors.white),
-          ),
-          backgroundColor: Colors.blue),
+        title: const Text(
+          " Tambah Poli",
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.blue,
+        iconTheme: IconThemeData(color: Colors.white),
+      ),
       body: SingleChildScrollView(
         child: Form(
           key: _formKey,
@@ -41,10 +43,14 @@ class _PoliFormState extends State<PoliForm> {
 
   _tombolSimpan() {
     return ElevatedButton(
-        onPressed: () {
+        onPressed: () async {
           Poli poli = new Poli(namaPoli: _namaPoliCtrl.text);
-          Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (context) => PoliDetail(poli: poli)));
+          await PoliService().simpan(poli).then((Poli) {
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => PoliDetail(poli: poli)));
+          });
         },
         style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
         child: const Text("Simpan", style: TextStyle(color: Colors.white)));

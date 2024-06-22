@@ -42,23 +42,25 @@ class _PagePasienState extends State<PagePasien> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text(
-            "Data Pasien",
-            style: TextStyle(color: Colors.white),
-          ),
-          actions: [
-            GestureDetector(
-              child: const Icon(
-                Icons.add,
-                color: Colors.white,
-              ),
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: ((context) => PasienForm())));
-              },
-            )
-          ],
-          backgroundColor: Colors.blue),
+        title: Text(
+          "Data Pasien",
+          style: TextStyle(color: Colors.white),
+        ),
+        actions: [
+          GestureDetector(
+            child: const Icon(
+              Icons.add,
+              color: Colors.white,
+            ),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: ((context) => PasienForm())));
+            },
+          )
+        ],
+        backgroundColor: Colors.blue,
+        iconTheme: IconThemeData(color: Colors.white),
+      ),
       body: ListView.builder(
         itemCount: _pasien.length,
         itemBuilder: (context, Index) {

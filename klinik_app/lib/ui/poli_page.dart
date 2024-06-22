@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:klinik_app/model/poli.dart';
-import 'package:klinik_app/ui/poli_detail.dart';
-import 'package:klinik_app/ui/poli_form.dart';
-import '../ui/poli_item.dart';
+import '../widget/sidebar.dart';
+import '../model/poli.dart';
+import 'poli_detail.dart';
+import 'poli_item.dart';
+import 'poli_form.dart';
 
 class PoliPage extends StatefulWidget {
   const PoliPage({super.key});
@@ -15,24 +16,29 @@ class _PoliPageState extends State<PoliPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Sidebar(),
       appBar: AppBar(
-          title: const Text(
-            "Data Poli",
-            style: TextStyle(color: Colors.white),
-          ),
-          actions: [
-            GestureDetector(
-              child: const Icon(
-                Icons.add,
-                color: Colors.white,
-              ),
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: ((context) => PoliForm())));
-              },
-            )
-          ],
-          backgroundColor: Colors.blue),
+        title: const Text(
+          "Data Poli",
+          style: TextStyle(color: Colors.white),
+        ),
+        actions: [
+          GestureDetector(
+            child: const Icon(
+              Icons.add,
+              color: Colors.white,
+            ),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => PoliForm()),
+              );
+            },
+          )
+        ],
+        backgroundColor: Colors.blue,
+        iconTheme: IconThemeData(color: Colors.white),
+      ),
       body: ListView(
         children: [
           PoliItem(poli: Poli(namaPoli: "Poli Anak")),
